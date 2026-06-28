@@ -1,0 +1,82 @@
+
+:root {
+	/* color variables */
+	--base-white: #fff;
+	--neutral-50: #fafafa;
+	--neutral-500: #222;
+	--neutral-300: #6b6b6b;
+	--neutral-100: #bababa;
+	--colors-base-black: #161616;
+	--icon-icon-default: var(--colors-base-black);
+
+	/* number variables */
+	--_0: 0px;
+
+	/* responsive margins / paddings */
+	--margin-sm: 16px;
+	--margin-md: 32px;
+}
+
+* {
+	--min-screen-size: 430;
+	--max-screen-size: 1440;
+	--interpolate-diff: calc(var(--max-font-size) - var(--min-font-size));
+	--interpolate: clamp(calc(var(--min-font-size) * 1px), calc((var(--min-font-size) * 1px) + var(--interpolate-diff) * ((100vw - calc(var(--min-screen-size) * 1px)) / (var(--max-screen-size) - var(--min-screen-size)))), calc(var(--max-font-size) * 1px));
+}
+
+html {
+	height: 100%;
+	font-size: 16px;
+}
+
+
+
+/* text utility classes */
+
+.text-neutral-500 {
+	color: var(--neutral-500);
+	font-size: 16px;
+	font-style: normal;
+	font-weight: 700;
+	line-height: 1.6;
+	letter-spacing: -0.19px;
+}
+
+
+
+/* section utility classes */
+
+.section2 {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 0 24px;
+}
+
+.section1 {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 0 80px;
+}
+
+
+
+/* ui objects utility classes */
+
+.circle {
+	width: calc(100% - 0px); height: 485px;
+	border-radius: 50%;
+}
+
+
+
+/* button hover utility classes */
+
+.hover-dark:hover {
+	filter: brightness(0.85);
+}
+
+.hover-bright:hover {
+	filter: brightness(1.2);
+}
