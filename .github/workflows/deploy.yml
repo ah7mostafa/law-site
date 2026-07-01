@@ -12,6 +12,7 @@ jobs:
           node-version: 20
       - run: npm ci
       - run: cp server/data.json public/data.json
+      - run: cp -r server/uploads/ public/uploads/
       - run: npm run build
       - uses: peaceiris/actions-gh-pages@v4
         with:
