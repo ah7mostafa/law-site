@@ -1,4 +1,5 @@
-const API = '/api/sections'
+const IS_DEV = import.meta.env.DEV
+const API = IS_DEV ? '/api/sections' : '/data.json'
 
 export async function getSections() {
   const res = await fetch(API)
@@ -6,7 +7,8 @@ export async function getSections() {
 }
 
 export async function saveAllSections(data) {
-  const res = await fetch(API, {
+  if (!IS_DEV) throw new Error('Read-only in production')
+  const res = await fetch('/api/sections', {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
@@ -15,7 +17,8 @@ export async function saveAllSections(data) {
 }
 
 export async function saveSection(key, data) {
-  const res = await fetch(`${API}/${key}`, {
+  if (!IS_DEV) throw new Error('Read-only in production')
+  const res = await fetch(`/api/sections/${key}`, {
     method: 'PUT',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data)
@@ -24,6 +27,7 @@ export async function saveSection(key, data) {
 }
 
 export async function uploadImage(file) {
+  if (!IS_DEV) throw new Error('Read-only in production')
   const form = new FormData()
   form.append('image', file)
   const res = await fetch('/api/upload', { method: 'POST', body: form })
